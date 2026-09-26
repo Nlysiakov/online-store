@@ -1,4 +1,11 @@
-import { Code, Container, Text, Title } from '@mantine/core';
+import '@fontsource-variable/inter';
+import { AppShell, MantineProvider, createTheme } from '@mantine/core';
+
+import '@mantine/core/styles.css';
+
+import Container from './components/Container';
+import Header from './components/Header';
+import { CartProvider } from './context/CardProvider';
 
 /**
  * Стартовая заглушка
@@ -16,20 +23,28 @@ import { Code, Container, Text, Title } from '@mantine/core';
  * Файловую структуру внутри src/ придумайте сами: алиас `@/` указывает на src,
  * поэтому импорты не сломаются, куда бы вы ни положили файл.
  */
+
+const theme = createTheme({
+    fontFamily: 'Inter Variable, sans-serif',
+    headings: {
+        fontFamily: 'Inter Variable, sans-serif',
+    },
+});
+
 export default function App() {
     return (
-        <Container size="lg" py="xl">
-            <Title order={1}>Магазин овощей</Title>
-            <Text c="dimmed" mt="sm">
-                Шаблон готов к работе. Удалите содержимое App.tsx и напишите своё приложение.
-            </Text>
-            {/*
-              Пример переменной окружения: Vite читает .env и подставляет
-              значения переменных с префиксом VITE_ в import.meta.env.
-            */}
-            <Text size="sm" mt="md">
-                Адрес API: <Code>{import.meta.env.VITE_API_URL}</Code>
-            </Text>
-        </Container>
+        <CartProvider>
+            <MantineProvider theme={theme}>
+                <AppShell header={{ height: 59 }} bg="#F3F5FA" mx="auto">
+                    <AppShell.Header maw="1440" mx="auto">
+                        <Header />
+                    </AppShell.Header>
+
+                    <AppShell.Main mih="100vh" maw="1440" mx="auto">
+                        <Container />
+                    </AppShell.Main>
+                </AppShell>
+            </MantineProvider>
+        </CartProvider>
     );
 }
