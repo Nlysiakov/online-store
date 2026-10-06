@@ -2,6 +2,7 @@ import { Group, Button, Text, Flex, Image, Card } from '@mantine/core';
 import { useState } from 'react';
 
 import { useCart } from '../context/useCart';
+import CartIcon from '../Icons/cart.svg?react';
 import { type Tproduct } from '../models/types';
 
 interface Props {
@@ -17,7 +18,9 @@ export default function ProductCard({ item }: Props) {
             <Image src={item.image} alt={item.name} />
             <Flex justify="space-between" direction="column" gap="10">
                 <Flex justify="space-between">
-                    <Text fz="18">{item.name}</Text>
+                    <Text fz="18" fw={600}>
+                        {item.name}
+                    </Text>
                     <Group gap="5">
                         <Button
                             bg="#DEE2E6"
@@ -33,10 +36,13 @@ export default function ProductCard({ item }: Props) {
                         </Button>
                     </Group>
                 </Flex>
-                <Flex justify="space-between">
-                    <Text>{`$ ${item.price}`}</Text>
+                <Flex justify="space-between" align="center">
+                    <Flex justify="center" align="center" flex={1}>
+                        <Text fz={20} fw={600}>{`$ ${item.price}`}</Text>
+                    </Flex>
                     <Button
-                        w="214"
+                        rightSection={<CartIcon width={20} height={20} />}
+                        w="204"
                         h="44"
                         bg="#E7FAEB"
                         c="#3B944E"

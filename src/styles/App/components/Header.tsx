@@ -1,18 +1,22 @@
-import { Text, Button, Group, Flex } from '@mantine/core';
+import { Text, Button, Group, Flex, Box } from '@mantine/core';
 import { useState } from 'react';
 
 import '@mantine/core/styles.css';
+import { useCart } from '../context/useCart';
+import CartIcon from '../Icons/cartWhite.svg?react';
+
 import Cart from './Cart';
 
 export default function Header() {
     const [openCart, setOpenCart] = useState(false);
+    const { items } = useCart();
 
     const handleCartState = () => {
         setOpenCart((prev) => !prev);
     };
 
     return (
-        <Group h="100%" justify="space-between" pos="relative">
+        <Group h="100%" justify="space-between" pos="relative" pl={12}>
             <Group w="209" h="33">
                 <Group bg="#F7F7F7" bdrs="31" h="100%">
                     <Flex align="center" pl="md" justify="center" h="100%" w="109">
@@ -27,7 +31,21 @@ export default function Header() {
                     </Flex>
                 </Group>
             </Group>
-            <Button w="144" h="44" bg="#54B46A" mr="md" onClick={handleCartState}>
+            <Button
+                w="144"
+                h="44"
+                bg="#54B46A"
+                mr="md"
+                fz={16}
+                fw={600}
+                onClick={handleCartState}
+                rightSection={<CartIcon />}
+            >
+                {items.length > 0 && (
+                    <Box w={20} h={20} bdrs="50%" bg="white" c="black" mr="xs">
+                        {items.length}
+                    </Box>
+                )}
                 Cart
             </Button>
             {openCart && <Cart />}

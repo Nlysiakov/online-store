@@ -26,8 +26,10 @@ import { CartProvider } from './context/CardProvider';
 
 const theme = createTheme({
     fontFamily: 'Inter Variable, sans-serif',
+    fontWeights: { bold: '600' },
     headings: {
         fontFamily: 'Inter Variable, sans-serif',
+        fontWeight: '600',
     },
 });
 

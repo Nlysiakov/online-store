@@ -38,7 +38,7 @@ export default function Container() {
     if (isError) return <Text c="black">{isError}</Text>;
 
     return (
-        <Group>
+        <Group w={1280} m="auto">
             <Title c="black" mt={40}>
                 Catalog
             </Title>
