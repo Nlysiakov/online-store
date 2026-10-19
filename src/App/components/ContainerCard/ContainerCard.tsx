@@ -2,7 +2,7 @@ import { Text, Title, Group, SimpleGrid } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { useEffect, useState } from 'react';
 
-import ProductCard from '@/App/components/ProductCard';
+import ProductCard from '@/App/components/ProductCard/ProductCard';
 import { type IProduct } from '@/App/models/types';
 
 const API = import.meta.env.VITE_API_URL;
@@ -37,7 +37,7 @@ export default function Container() {
     if (isError) return <Text c="black">{isError}</Text>;
 
     return (
-        <Group w={1280} m="auto">
+        <Group w={1280} m="auto" px={'md'}>
             <Title c="black" mt={40}>
                 Catalog
             </Title>

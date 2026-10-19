@@ -2,7 +2,7 @@ import { Group, Button, Text, Flex, Image, Card, ActionIcon } from '@mantine/cor
 import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { useState } from 'react';
 
-import { useCart } from '@/App/context/useCart';
+import { useCart } from '@/App/context/CartContext/useCart';
 import CartIcon from '@/App/Icons/cart.svg?react';
 import { type IProduct } from '@/App/models/types';
 
@@ -13,15 +13,21 @@ interface Props {
 export default function ProductCard({ item }: Props) {
     const { addItem } = useCart();
     const [qty, setQty] = useState(1);
+    const [name, weight] = item.name.split(' - ');
 
     return (
         <Card key={item.id}>
             <Image src={item.image} alt={item.name} />
             <Flex justify="space-between" direction="column" gap="10">
                 <Flex justify="space-between">
-                    <Text fz="18" fw={600}>
-                        {item.name}
-                    </Text>
+                    <Group>
+                        <Text fz={18} fw={600}>
+                            {name}
+                        </Text>
+                        <Text fz={14} c={'#868E96'}>
+                            {weight}
+                        </Text>
+                    </Group>
                     <Group gap="5">
                         <ActionIcon
                             bg="#DEE2E6"

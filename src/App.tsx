@@ -3,9 +3,9 @@ import { AppShell, MantineProvider } from '@mantine/core';
 
 import '@mantine/core/styles.css';
 
-import Container from '@/App/components/ContainerCard';
-import Header from '@/App/components/Header';
-import { CartProvider } from '@/App/context/CartProvider';
+import Container from '@/App/components/ContainerCard/ContainerCard';
+import Header from '@/App/components/Header/Header';
+import { CartProvider } from '@/App/context/CartContext/CartProvider';
 
 /**
  * Стартовая заглушка

@@ -2,10 +2,10 @@ import { Text, Button, Group, Flex, Box } from '@mantine/core';
 import { useState } from 'react';
 
 import '@mantine/core/styles.css';
-import { useCart } from '@/App/context/useCart';
+import { useCart } from '@/App/context/CartContext/useCart';
 import CartIcon from '@/App/Icons/cartWhite.svg?react';
 
-import Cart from './Cart';
+import Cart from '../Cart/Cart';
 
 export default function Header() {
     const [openCart, setOpenCart] = useState(false);

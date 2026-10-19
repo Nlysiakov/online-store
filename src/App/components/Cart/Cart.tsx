@@ -2,7 +2,7 @@ import { Text, Flex, Image, Group, ActionIcon } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { IconMinus, IconPlus } from '@tabler/icons-react';
 
-import { useCart } from '@/App/context/useCart';
+import { useCart } from '@/App/context/CartContext/useCart';
 import CartEmpty from '@/App/Icons/cartEmpty.svg?react';
 
 export default function Cart() {
