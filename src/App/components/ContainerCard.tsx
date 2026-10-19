@@ -2,14 +2,13 @@ import { Text, Title, Group, SimpleGrid } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { useEffect, useState } from 'react';
 
-import { type Tproduct } from '../models/types';
-
-import ProductCard from './ProductCard';
+import ProductCard from '@/App/components/ProductCard';
+import { type IProduct } from '@/App/models/types';
 
 const API = import.meta.env.VITE_API_URL;
 
 export default function Container() {
-    const [data, setData] = useState<Tproduct[]>([]);
+    const [data, setData] = useState<IProduct[]>([]);
     const [loading, setLoading] = useState(true);
     const [isError, setIsError] = useState<string | null>(null);
 
@@ -20,7 +19,7 @@ export default function Container() {
                 if (!responce.ok) {
                     throw new Error('HTTP Error');
                 }
-                const responceJson = (await responce.json()) as Tproduct[];
+                const responceJson = (await responce.json()) as IProduct[];
                 setLoading(false);
                 setData(responceJson);
             } catch (err) {

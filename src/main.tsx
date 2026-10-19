@@ -1,12 +1,22 @@
-import { MantineProvider } from '@mantine/core';
+import '@fontsource-variable/inter';
+import { MantineProvider, createTheme } from '@mantine/core';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import App from '@/styles/App/App';
+import App from '@/App';
 
 // Стили библиотеки подключаются ДО собственных, чтобы их можно было переопределить
 import '@mantine/core/styles.css';
-import '@/styles/index.css';
+import '@/App/styles/index.css';
+
+const theme = createTheme({
+    fontFamily: 'Inter Variable, sans-serif',
+    fontWeights: { bold: '600' },
+    headings: {
+        fontFamily: 'Inter Variable, sans-serif',
+        fontWeight: '600',
+    },
+});
 
 const container = document.getElementById('root');
 
@@ -16,7 +26,7 @@ if (!container) {
 
 createRoot(container).render(
     <StrictMode>
-        <MantineProvider defaultColorScheme="light">
+        <MantineProvider theme={theme} defaultColorScheme="light">
             <App />
         </MantineProvider>
     </StrictMode>,

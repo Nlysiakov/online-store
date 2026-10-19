@@ -1,8 +1,9 @@
-import { Text, Flex, Image, Group, Button } from '@mantine/core';
+import { Text, Flex, Image, Group, ActionIcon } from '@mantine/core';
 import '@mantine/core/styles.css';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 
-import { useCart } from '../context/useCart';
-import CartEmpty from '../Icons/cart_empty.svg?react';
+import { useCart } from '@/App/context/useCart';
+import CartEmpty from '@/App/Icons/cartEmpty.svg?react';
 
 export default function Cart() {
     const { items, total, updateQuantity } = useCart();
@@ -52,25 +53,31 @@ export default function Cart() {
                                         ${item.price * item.quantity}
                                     </Text>
                                     <Group gap="5">
-                                        <Button
+                                        <ActionIcon
+                                            w={30}
+                                            h={30}
                                             bg="#DEE2E6"
                                             c="black"
                                             onClick={() =>
                                                 updateQuantity(item.id, item.quantity - 1)
                                             }
                                         >
-                                            -
-                                        </Button>
-                                        <Text c="black">{item.quantity}</Text>
-                                        <Button
+                                            <IconMinus height={12} width={12} />
+                                        </ActionIcon>
+                                        <Text h={30} w={15} ta={'center'} c="black">
+                                            {item.quantity}
+                                        </Text>
+                                        <ActionIcon
+                                            w={30}
+                                            h={30}
                                             bg="#DEE2E6"
                                             c="black"
                                             onClick={() =>
                                                 updateQuantity(item.id, item.quantity + 1)
                                             }
                                         >
-                                            +
-                                        </Button>
+                                            <IconPlus height={12} width={12} />
+                                        </ActionIcon>
                                     </Group>
                                 </Flex>
                             </Flex>

@@ -1,11 +1,11 @@
 import { type ReactNode, useState } from 'react';
 
-import { CartContext, type TcartItem } from './CardContext';
+import { CartContext, type ICartItem } from '@/App/context/CartContext';
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-    const [items, setItems] = useState<TcartItem[]>([]);
+    const [items, setItems] = useState<ICartItem[]>([]);
 
-    const addItem = (item: TcartItem) => {
+    const addItem = (item: ICartItem) => {
         setItems((prev) => {
             const existing = prev.find((i) => i.id === item.id);
             if (existing) {

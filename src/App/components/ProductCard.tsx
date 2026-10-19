@@ -1,12 +1,13 @@
-import { Group, Button, Text, Flex, Image, Card } from '@mantine/core';
+import { Group, Button, Text, Flex, Image, Card, ActionIcon } from '@mantine/core';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { useState } from 'react';
 
-import { useCart } from '../context/useCart';
-import CartIcon from '../Icons/cart.svg?react';
-import { type Tproduct } from '../models/types';
+import { useCart } from '@/App/context/useCart';
+import CartIcon from '@/App/Icons/cart.svg?react';
+import { type IProduct } from '@/App/models/types';
 
 interface Props {
-    item: Tproduct;
+    item: IProduct;
 }
 
 export default function ProductCard({ item }: Props) {
@@ -22,18 +23,18 @@ export default function ProductCard({ item }: Props) {
                         {item.name}
                     </Text>
                     <Group gap="5">
-                        <Button
+                        <ActionIcon
                             bg="#DEE2E6"
                             c="black"
                             onClick={() => setQty((q) => Math.max(q - 1))}
                             disabled={qty === 1}
                         >
-                            -
-                        </Button>
+                            <IconMinus height={12} width={12} />
+                        </ActionIcon>
                         <Text c="black">{qty}</Text>
-                        <Button bg="#DEE2E6" c="black" onClick={() => setQty((q) => q + 1)}>
-                            +
-                        </Button>
+                        <ActionIcon bg="#DEE2E6" c="black" onClick={() => setQty((q) => q + 1)}>
+                            <IconPlus height={12} width={12} />
+                        </ActionIcon>
                     </Group>
                 </Flex>
                 <Flex justify="space-between" align="center">

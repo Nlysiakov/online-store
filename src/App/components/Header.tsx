@@ -2,8 +2,8 @@ import { Text, Button, Group, Flex, Box } from '@mantine/core';
 import { useState } from 'react';
 
 import '@mantine/core/styles.css';
-import { useCart } from '../context/useCart';
-import CartIcon from '../Icons/cartWhite.svg?react';
+import { useCart } from '@/App/context/useCart';
+import CartIcon from '@/App/Icons/cartWhite.svg?react';
 
 import Cart from './Cart';
 
@@ -42,8 +42,10 @@ export default function Header() {
                 rightSection={<CartIcon />}
             >
                 {items.length > 0 && (
-                    <Box w={20} h={20} bdrs="50%" bg="white" c="black" mr="xs">
-                        {items.length}
+                    <Box pos={'relative'} w={20} h={20} bdrs="50%" bg="white" mr="xs">
+                        <Box pos={'absolute'} h={34} w={14} top={-3} left={3.33} fz={23} c="black">
+                            {items.length}
+                        </Box>
                     </Box>
                 )}
                 Cart

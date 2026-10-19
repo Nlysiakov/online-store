@@ -1,11 +1,11 @@
 import '@fontsource-variable/inter';
-import { AppShell, MantineProvider, createTheme } from '@mantine/core';
+import { AppShell, MantineProvider } from '@mantine/core';
 
 import '@mantine/core/styles.css';
 
-import Container from './components/Container';
-import Header from './components/Header';
-import { CartProvider } from './context/CardProvider';
+import Container from '@/App/components/ContainerCard';
+import Header from '@/App/components/Header';
+import { CartProvider } from '@/App/context/CartProvider';
 
 /**
  * Стартовая заглушка
@@ -24,19 +24,10 @@ import { CartProvider } from './context/CardProvider';
  * поэтому импорты не сломаются, куда бы вы ни положили файл.
  */
 
-const theme = createTheme({
-    fontFamily: 'Inter Variable, sans-serif',
-    fontWeights: { bold: '600' },
-    headings: {
-        fontFamily: 'Inter Variable, sans-serif',
-        fontWeight: '600',
-    },
-});
-
 export default function App() {
     return (
         <CartProvider>
-            <MantineProvider theme={theme}>
+            <MantineProvider>
                 <AppShell header={{ height: 59 }} bg="#F3F5FA" mx="auto">
                     <AppShell.Header maw="1440" mx="auto">
                         <Header />
