@@ -1,43 +1,18 @@
-import { Text, Title, Group, SimpleGrid } from '@mantine/core';
+import { Text, Title, SimpleGrid, Container, Loader } from '@mantine/core';
 import '@mantine/core/styles.css';
-import { useEffect, useState } from 'react';
 
 import ProductCard from '@/App/components/ProductCard/ProductCard';
-import { type IProduct } from '@/App/models/types';
+import { useProduct } from '@/App/customHooks/useProducts';
 
-const API = import.meta.env.VITE_API_URL;
+export default function ContainerCard() {
+    const { data, loading, isError } = useProduct();
 
-export default function Container() {
-    const [data, setData] = useState<IProduct[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [isError, setIsError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const responce = await fetch(API);
-                if (!responce.ok) {
-                    throw new Error('HTTP Error');
-                }
-                const responceJson = (await responce.json()) as IProduct[];
-                setLoading(false);
-                setData(responceJson);
-            } catch (err) {
-                console.error('Ошибка: ', err);
-                setIsError(err instanceof Error ? err.message : 'Неизвестная ошибка');
-            } finally {
-                setLoading(false);
-            }
-        };
-        void fetchData();
-    }, []);
-
-    if (loading) return <Text c="black">Loading...</Text>;
+    if (loading) return <Loader c="black">Loading...</Loader>;
 
     if (isError) return <Text c="black">{isError}</Text>;
 
     return (
-        <Group w={1280} m="auto" px={'md'}>
+        <Container size={1280} px="md" pb={40}>
             <Title c="black" mt={40}>
                 Catalog
             </Title>
@@ -46,6 +21,6 @@ export default function Container() {
                     <ProductCard key={item.id} item={item} />
                 ))}
             </SimpleGrid>
-        </Group>
+        </Container>
     );
 }

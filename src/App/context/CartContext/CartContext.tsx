@@ -1,10 +1,6 @@
 import { createContext } from 'react';
 
-import { type IProduct } from '@/App/models/types';
-
-export interface ICartItem extends IProduct {
-    quantity: number;
-}
+import { type ICartItem } from '@/App/models/types';
 
 interface ICartContext {
     items: ICartItem[];

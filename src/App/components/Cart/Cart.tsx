@@ -14,11 +14,8 @@ export default function Cart() {
             mih={250}
             mah={400}
             direction="column"
-            pos="absolute"
             bg="#FFFFFF"
             bd="1px solid #21252914"
-            right={0}
-            top={80}
             bdrs="lg"
             p="md"
             gap="sm"
@@ -32,57 +29,66 @@ export default function Cart() {
                 </Flex>
             ) : (
                 <Flex direction="column" gap="xs" style={{ flex: 1, overflowY: 'auto' }}>
-                    {items.map((item) => (
-                        <Flex
-                            direction="row"
-                            key={item.id}
-                            gap="sm"
-                            align="center"
-                            w={396}
-                            h={80}
-                            style={{ borderBottom: '1px solid #DEE2E6' }}
-                        >
-                            <Image src={item.image} alt={item.name} w={64} h={64} fit="cover" />
+                    {items.map((item) => {
+                        const [name, weight] = item.name.split(' - ');
 
-                            <Flex direction="column" style={{ flex: 1 }}>
-                                <Text c="black" fz={18} fw={600}>
-                                    {item.name}
-                                </Text>
-                                <Flex justify="space-between">
-                                    <Text c="black" fz={20} fw={600}>
-                                        ${item.price * item.quantity}
-                                    </Text>
-                                    <Group gap="5">
-                                        <ActionIcon
-                                            w={30}
-                                            h={30}
-                                            bg="#DEE2E6"
-                                            c="black"
-                                            onClick={() =>
-                                                updateQuantity(item.id, item.quantity - 1)
-                                            }
-                                        >
-                                            <IconMinus height={12} width={12} />
-                                        </ActionIcon>
-                                        <Text h={30} w={15} ta={'center'} c="black">
-                                            {item.quantity}
+                        return (
+                            <Flex
+                                direction="row"
+                                key={item.id}
+                                gap="sm"
+                                align="center"
+                                w={396}
+                                h={80}
+                                style={{ borderBottom: '1px solid #DEE2E6' }}
+                            >
+                                <Image src={item.image} alt={item.name} w={64} h={64} fit="cover" />
+
+                                <Flex direction="column" style={{ flex: 1 }}>
+                                    <Group>
+                                        <Text c="black" fz={18} fw={600}>
+                                            {name}
                                         </Text>
-                                        <ActionIcon
-                                            w={30}
-                                            h={30}
-                                            bg="#DEE2E6"
-                                            c="black"
-                                            onClick={() =>
-                                                updateQuantity(item.id, item.quantity + 1)
-                                            }
-                                        >
-                                            <IconPlus height={12} width={12} />
-                                        </ActionIcon>
+                                        <Text fz={14} c={'#868E96'}>
+                                            {weight}
+                                        </Text>
                                     </Group>
+                                    <Flex justify="space-between">
+                                        <Text c="black" fz={20} fw={600}>
+                                            ${item.price * item.quantity}
+                                        </Text>
+                                        <Group gap="5">
+                                            <ActionIcon
+                                                w={30}
+                                                h={30}
+                                                bg="#DEE2E6"
+                                                c="black"
+                                                onClick={() =>
+                                                    updateQuantity(item.id, item.quantity - 1)
+                                                }
+                                            >
+                                                <IconMinus height={12} width={12} />
+                                            </ActionIcon>
+                                            <Text h={30} w={15} ta={'center'} c="black">
+                                                {item.quantity}
+                                            </Text>
+                                            <ActionIcon
+                                                w={30}
+                                                h={30}
+                                                bg="#DEE2E6"
+                                                c="black"
+                                                onClick={() =>
+                                                    updateQuantity(item.id, item.quantity + 1)
+                                                }
+                                            >
+                                                <IconPlus height={12} width={12} />
+                                            </ActionIcon>
+                                        </Group>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                        </Flex>
-                    ))}
+                        );
+                    })}
                     <Flex
                         justify="space-between"
                         c="black"

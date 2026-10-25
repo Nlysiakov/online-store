@@ -33,7 +33,7 @@ export default function App() {
                         <Header />
                     </AppShell.Header>
 
-                    <AppShell.Main mih="100vh" maw="1440" mx="auto">
+                    <AppShell.Main maw="1440" mx="auto">
                         <Container />
                     </AppShell.Main>
                 </AppShell>
