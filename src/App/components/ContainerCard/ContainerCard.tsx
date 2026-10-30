@@ -1,13 +1,19 @@
-import { Text, Title, SimpleGrid, Container, Loader } from '@mantine/core';
+import { Text, Title, SimpleGrid, Container, Loader, Flex } from '@mantine/core';
 import '@mantine/core/styles.css';
 
 import ProductCard from '@/App/components/ProductCard/ProductCard';
-import { useProduct } from '@/App/customHooks/useProducts';
+import { useProduct } from '@/App/hooks/useProducts';
 
 export default function ContainerCard() {
     const { data, loading, isError } = useProduct();
 
-    if (loading) return <Loader c="black">Loading...</Loader>;
+    if (loading) {
+        return (
+            <Flex justify="center" py="xl">
+                <Loader color="#54B46A" />
+            </Flex>
+        );
+    }
 
     if (isError) return <Text c="black">{isError}</Text>;
 

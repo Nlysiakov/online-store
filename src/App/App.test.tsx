@@ -2,11 +2,11 @@
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { describe, expect, it, beforeEach, vi } from 'vitest';
 
-import { CartProvider } from './App/context/CartContext/CartProvider';
-import { useCart } from './App/context/CartContext/useCart';
-import { useProduct } from './App/customHooks/useProducts';
+import { CartProvider } from './context/CartContext/CartProvider';
+import { useCart } from './context/CartContext/useCart';
+import { useProduct } from './hooks/useProducts';
 
-import type { ICartItem } from './App/models/types';
+import type { ICartItem } from './models/types';
 
 // import App from '@/App';
 

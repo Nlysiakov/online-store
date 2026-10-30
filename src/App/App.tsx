@@ -1,5 +1,5 @@
 import '@fontsource-variable/inter';
-import { AppShell, MantineProvider } from '@mantine/core';
+import { AppShell } from '@mantine/core';
 
 import '@mantine/core/styles.css';
 
@@ -27,17 +27,15 @@ import { CartProvider } from '@/App/context/CartContext/CartProvider';
 export default function App() {
     return (
         <CartProvider>
-            <MantineProvider>
-                <AppShell header={{ height: 59 }} bg="#F3F5FA" mx="auto">
-                    <AppShell.Header maw="1440" mx="auto">
-                        <Header />
-                    </AppShell.Header>
+            <AppShell header={{ height: 59 }} bg="#F3F5FA" mx="auto">
+                <AppShell.Header>
+                    <Header />
+                </AppShell.Header>
 
-                    <AppShell.Main maw="1440" mx="auto">
-                        <Container />
-                    </AppShell.Main>
-                </AppShell>
-            </MantineProvider>
+                <AppShell.Main>
+                    <Container />
+                </AppShell.Main>
+            </AppShell>
         </CartProvider>
     );
 }
